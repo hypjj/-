@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// ES6中创建对象时引入了class和constructor用来创建对象
+		class SigleProjet {
+			constructor(name){
+				// instance 作为该函数的唯一实例
+				if (!SigleProjet.instance){
+					this.name = name
+					SigleProjet.instance = this
+				}
+				return SigleProjet.instance
+			}
+		}
+
+		const ins1 = new SigleProjet('zs')
+		const ins2 = new SigleProjet('ls')
+		console.log(ins1 === ins2)
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// 单例模式是一种十分常用但却相对而言比较简单的设计模式。
+		// 它是指在一个类只能有一个实例，即使多次实例化该类，也只返回第一次实例化后的实例对象。
+		// 单例模式不仅能减少不必要的内存开销, 并且在减少全局的函数和变量冲突也具有重要的意义。
+
+		// 字面量方式创建 使用let创建保证不可被重复定义
+		// 这种方式简单，方便，可全局使用
+		// 缺点是不分类型， 都是object，且不好维护内部私有变量或方法
+		let sigleProject = {
+			name: 'the one',
+			say(){
+				console.log('i am the only one!')
+			}
+		}
+
+		// 立即执行方法
+		// 用立即执行函数 返回构造函数
+		let sigleProjectSup = (function() {
+			// 创建唯一实例，初始为空
+			let _instance = null
+			// 构造函数
+			function init(){
+				this.name = "the one"
+				this.say = function(){
+					console.log('i am the only one!')
+				}
+			}
+
+			return function(){
+				if (!_instance){
+					_instance = new init()
+				}
+				return _instance
+			}
+		})()
+
+		const instance1 = sigleProjectSup()
+		const instance2 = sigleProjectSup()
+
+		console.log(instance1.name)
+
+
+	</script>
+</body>
+</html>

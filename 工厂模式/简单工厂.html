@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			工厂模式--目的是为了更详细的生成实例
+			比如： 我想要一个菠萝汉堡，我只需要输入菠萝，就能得到菠萝汉堡，而不用关心汉堡是怎么生成的
+		*/
+
+		// 字面量模式
+		let factory = function(name){
+			function Apple(){
+				this.name = 'apple'
+			}
+			function Orange(){
+				this.name = 'orange'
+			}
+			function Banana(){
+				this.name = 'banana'
+			}
+
+			switch(name){
+				case'apple':{
+					return new Apple()
+				}
+				case'orange':{
+					return new Orange()
+				}
+				case'banana':{
+					return new Banana()
+				}
+				default: {
+					throw new Error("i can't do that")
+				}
+			}
+		}
+		let pp = factory('apple')
+		console.log(pp)
+		// 以上方法可以实现
+		// 问题在于 每次要添加一个新的水果，我就要添加一个新的构造函数和switch
+	</script>
+</body>
+</html>

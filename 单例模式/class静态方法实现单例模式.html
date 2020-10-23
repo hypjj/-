@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		/*
+			ES6中提供了为class提供了static关键字定义静态方法， 我们可以将constructor中判断是否实例化的逻辑放入一个静态方法getInstance中，调用该静态方法获取实例， constructor中只包需含实例化所需的代码，这样能增强代码的可读性、结构更加优化。
+		*/
+		class Sigle{
+			constructor(name){
+				this.name = name
+			}
+
+			static getInstance(name){
+				if (!this.instance){
+					this.instance = new Sigle(name)
+				}
+				return this.instance
+			}
+		}
+
+		const sigle1 = Sigle.getInstance('zs')
+		const sigle2 = Sigle.getInstance('ls')
+		console.log(sigle1, sigle2)
+	</script>
+</body>
+</html>
