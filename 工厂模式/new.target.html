@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// 在普通的函数调用中（和作为构造函数来调用相对），new.target的值是undefined。
+		// 这使得你可以检测一个函数是否是作为构造函数通过new被调用的。
+		function Foo(){
+			if (!new.target){
+				throw new Error('你必须通过new来创建实例')
+			}
+			console.log('创建成功')
+		}
+
+		let f = Foo()  // 报错
+		let f1 = new Foo() // 创建成功
+	</script>
+</body>
+</html>
